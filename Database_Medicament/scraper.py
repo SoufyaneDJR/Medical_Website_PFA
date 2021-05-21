@@ -118,7 +118,6 @@ def page_scraper(url):
 
 db_content =[]
 
-# for letter in urlinfo :
 for letter in urlinfo:
     for page in range (int(urlinfo[letter])):
         print(page + 1)
