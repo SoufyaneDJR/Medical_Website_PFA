@@ -1,0 +1,25 @@
+.header-food {
+  background: linear-gradient(rgba(255, 0, 0, 0.9), rgba(69, 215, 252, 0.8)),
+    url("food.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  text-align: center;
+  height: 45vh;
+  width: 100;
+}
+.header-title {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  color: white;
+}
+.par {
+  padding: 10px;
+  color: white;
+  font-size: 15px;
+}

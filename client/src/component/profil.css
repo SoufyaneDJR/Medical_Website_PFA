@@ -1,0 +1,10 @@
+.input-profil {
+  padding: 0px;
+}
+.input {
+  border: 2px solid black;
+  border-radius: 3px;
+}
+.avatar {
+  margin: 20px auto;
+}

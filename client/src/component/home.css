@@ -1,0 +1,65 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Nunito", sans-serif;
+}
+
+.app-text {
+  width: 50%;
+  float: left;
+  padding-left: 50px;
+  border: 1px solid gray;
+  border-radius: 7px;
+  margin-right: 20px;
+  transition: 0.5s;
+}
+.app-text:hover {
+  box-shadow: 0 0 10px 0.5px grey;
+}
+
+strong {
+  font-size: 36px;
+  font-weight: 600;
+  color: gray;
+}
+.app-picture {
+  margin-right: 0px;
+}
+
+.course-col1 {
+  flex-basis: 25%;
+  background: white;
+  border-radius: 10px;
+  margin-bottom: 5%;
+  padding-bottom: 60px;
+  box-sizing: border-box;
+  transition: 0.5s;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 2px;
+  height: 100%;
+  margin-left: 60px;
+  margin-right: 60px;
+
+  font-size: 10px;
+}
+.row1 {
+  margin-top: 5%;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media all and (max-width: 400px) {
+  .logo {
+    padding-left: 10px;
+  }
+  .row1 {
+    flex-direction: column;
+  }
+}
+.img {
+  width: 50%;
+  height: auto;
+  margin: 20px auto;
+}

@@ -1,0 +1,53 @@
+.country-details {
+  height: 90px;
+  width: 60%;
+  border-bottom: 1px solid black;
+  margin: auto;
+  padding-bottom: 1em !important;
+  margin-top: 2.8 !important;
+}
+.country-icons {
+  padding: 0 15px;
+  max-width: 16%;
+  min-width: 13%;
+  float: left;
+}
+.country-flag {
+  max-width: 100%;
+  height: 100%;
+}
+.cases-detail {
+  height: 50%;
+  width: calc(100%-16%);
+  float: left;
+  display: grid;
+  grid-template-columns: 33.333% 47.33 calc(100%-33.333%-47.33%);
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+
+  padding-left: 105px;
+  margin-top: -20px;
+}
+a {
+  color: rgb(30, 126, 46);
+  text-decoration: none;
+  background-color: transparent;
+  font-size: 1rem;
+  padding-left: 8px;
+}
+p {
+  color: black;
+  font-weight: 200;
+  font-size: 1rem;
+}
+p strong {
+  color: black;
+  font-size: large;
+}
+.cases-box-deaths {
+  padding-left: 50px;
+}
+.cases-box-recovered {
+  padding-left: 90px;
+}

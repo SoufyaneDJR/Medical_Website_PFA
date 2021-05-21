@@ -1,0 +1,45 @@
+.footer-img {
+  width: 20%;
+  border-radius: 3px;
+  margin-left: 250px;
+}
+.footer {
+  background-color: black;
+  height: 300px;
+}
+.col1 li {
+  margin-left: 20px;
+  list-style-type: none;
+  margin-top: 20px;
+  font-size: 15px;
+  color: yellowgreen;
+  cursor: pointer;
+}
+.col2 li {
+  margin-left: 20px;
+  list-style-type: none;
+  margin-top: 20px;
+  font-size: 15px;
+  color: yellowgreen;
+  padding-left: 140px;
+  cursor: pointer;
+}
+.footer-title {
+  color: yellowgreen;
+  padding-left: 150px;
+  margin-top: -70px;
+}
+.footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.a:visited {
+  color: yellowgreen;
+}
+.a:hover {
+  text-decoration: none;
+}
+.a {
+  text-decoration: none;
+}
