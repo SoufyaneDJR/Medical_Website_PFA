@@ -30,6 +30,7 @@ function Navbar() {
         Sidebar.pop()
       }else{
         setLoginStatus(false)
+        Sidebar.splice(1,1)
       }
     });
   }, []);
@@ -50,23 +51,20 @@ function Navbar() {
         <Link to="#" className="menu-bars">
           <FaIcons.FaBars onClick={showSidebar} onRequestClose={showSidebar}/>
         </Link>
-
-       <img src="health1.png" className="logo"/>
       
-
+       <img src="health1.png" className="logo"/>
        <Button 
-          
-          startIcon={<FiIcons.FiLogIn color="yellowgreen" />} 
-          style={btnLoginStyle}
+          startIcon={<FiIcons.FiLogIn color="black"/>} 
+          style={{color:'black', backgroundColor:"yellowgreen",borderRadius:"3px", fontSize:1, alignContent:'right'}}
           className="login"           
           variant="contained"
           size="small"
           href={LoginStatus ? "signout" : "signin"} >
           {LoginStatus ? "sign Out" : "sign In"}
        </Button>
-       
+       </div>
 
-      </div>
+      
       <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
         <ul className="nav-menu-items" onClick={showSidebar}>
           <li className="nav-bar-toggle">

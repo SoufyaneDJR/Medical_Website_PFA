@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from "styled-components"
 import {motion} from "framer-motion"
-import { Button } from '@material-ui/core'
 import PlanetOne from '../images/aa.png';
 import PlanetTwo from '../images/bb.png';
 import PlanetThree from '../images/cc.png';
@@ -16,7 +15,7 @@ function Hero() {
   };
 
   const Section = styled.section`
-  background-color: black;
+  background: black;
   height: 88vh;
   display: flex;
   justify-content: center;
@@ -66,14 +65,14 @@ const Image = styled(motion.img)`
 position: absolute;
 width: 100%;
 height: 100%;
-max-width: 250px;
-max-height: 250px;
+max-width: 200px;
+max-height: 200px;
 border-radius: 100%;
 
 `
 
   const ColumnRight = styled.div`
-   display: flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   padding: 2rem;
@@ -90,11 +89,12 @@ border-radius: 100%;
   }
   ${Image}:nth-child(3) {
     top: 280px;
-    left: 50px;
+    left: 0px;
   }
   ${Image}:nth-child(4) {
     bottom: 30px;
-    right: 75px;
+    right: 20px;
+    
   }
   `
   
@@ -116,14 +116,7 @@ border-radius: 100%;
             animate='visible'
             transition={{ duration: 0.1 }}
             >Stay safe Stay Healthy</motion.p>
-            <Button
-            href="services"
-            whileHover={{scale:1.1}}
-            whileTap={{backgroundColor:'#B3B300', scale:0.9 , border:'none'}}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration:0.1 }}
-            >Get Started</Button>
+           
           </ColumnLeft>
           <ColumnRight>
           <Image
@@ -155,7 +148,7 @@ border-radius: 100%;
           alt='planet'
           whileTap={{ scale: 0.9 }}
           drag={true}
-          dragConstraints={{ left: 50, right: 250, top: 0, bottom: 0 }}
+          dragConstraints={{ left: 50, right: 150, top: 0, bottom: 0 }}
           initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1, y: 0, transition: { duration: 1 } }}/>
 

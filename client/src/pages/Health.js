@@ -28,7 +28,7 @@ export default function Health() {
     <div className="health">
        <div className="controls">
         <input
-          className="input"
+          className="input1"
           type="number"
           placeholder="Calories (e.g. 2000)"
           onChange={handleChange}

@@ -5,3 +5,8 @@
 .facebook-login {
   margin-left: -5px;
 }
+.signupSection {
+  background: linear-gradient(rgba(97, 226, 243, 0.2), rgba(73, 8, 223, 0.2)),
+    url("../hospital.jpg");
+  background-size: cover;
+}

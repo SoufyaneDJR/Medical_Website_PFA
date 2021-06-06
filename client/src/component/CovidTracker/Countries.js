@@ -6,6 +6,7 @@ import axios from "axios"
 import HeadingNames from './HeadingNames'
 import CountryDetalis from './CountryDetalis'
 import NumberFormat from "react-number-format"
+import * as ImIcons from "react-icons/im"
 
 export default class Countries extends Component {
 
@@ -90,7 +91,7 @@ export default class Countries extends Component {
     return (
       
       <div className="countries-stats">
-        <h2 className="countries-stats-heading">Countries Stats</h2>
+        <h2 className="countries-stats-heading"> <ImIcons.ImStatsDots/> Countries Stats</h2>
         <div className="filtering">
           <input type="text" placeholder="Enter the Country" onChange={this.searchCountry}/>
           <select className="sort-by" onChange = {this.ChangeSortValue} >

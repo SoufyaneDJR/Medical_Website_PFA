@@ -4,87 +4,97 @@ import React, {useState} from 'react'
 import LocalHospitalIcon from '@material-ui/icons/LocalHospital';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import {GoogleLogin} from 'react-google-login'
-import FacebookLogin from 'react-facebook-login';
 import "./signup.css"
 import axios from 'axios'
 import { Link, useHistory, withRouter } from 'react-router-dom';
+import * as BiIcons from "react-icons/bi"
+
 
 
 function Signup() {
 
   
-    const paperStyle = {padding : 20, height:'80vh', width:350 ,border: '2px solid gray',margin:"20px auto"}
+    const paperStyle = {padding : 20, height:'80vh', width:500 ,border: '2px solid gray',margin:"0px auto" , display: 'grid',backgroundColor:'rgba(255,255,255,0.6)' }
     const avatarStyle = { backgroundColor: 'gray'}
     const btnStyle = {color:"black", margin:"8px 0px" }
 
     const [userNameReg, setUserNameReg] = useState("")
     const [passwordReg, setPasswordReg] = useState("")
     const [emailReg, setEmailReg] = useState("")
+    const [phone, setPhone] = useState("")
+    const [date, setDate] = useState("")
+    const [firstName, setFirstNameReg] = useState("")
+    const [lastName, setLastNameReg] = useState("")
+   
+    let validat = false
+    const validation=(email)=>{
+      let re = /\S+@\S+\.\S+/;  return re.test(email);
+     }
 
     axios.defaults.withCredentials = true
     // create function to send informations to the back-end
     const Register = () => {
-        axios.post("http://localhost:3002/register",{
-          username: userNameReg, 
-          password: passwordReg, 
-          email: emailReg,
-        }).then((response)=>{
-          console.log(response)
+      if(firstName==""||lastName==""||userNameReg==""||phone==""||date==""||passwordReg==""||emailReg==""){
+        alert("you have to fill all the fields")
+        validat=false
+      }else{
+        if(!validation(emailReg)){
+          alert("E-mail Not Valid")
+        }else{
           
-        })
-    }
-    
-    const responseGoogle=(response)=>{
-      console.log(response);
-      console.log(response.profilObj);
-    }
-
-    const responseFacebook = (response) => {
-      console.log(response);
-    } 
-
-  return (
-    
-      <div>
-      <Grid  >
+          validat=true
+          axios.post("http://localhost:3002/register",{
+            firstName: firstName,
+            lastName : lastName,
+            username: userNameReg, 
+            phone: phone,
+            birthday : date,
+            password: passwordReg, 
+            email: emailReg,
+          }).then((response)=>{
+            console.log(response)
+            if(response.data){
+              alert(response.data)
+            }
+            
+          })
+        }
+        }
         
-        <Paper elevation={10} style={paperStyle}>
+    }
+    
+
+    return (
+    
+      <div className="signupSection" >
+      
+      <Grid  >
+        <h1 style={{ padding:20}}> <BiIcons.BiLogInCircle/>  CREATE ACCOUNT</h1>
+        <Paper elevation={20} style={paperStyle}>
          <Grid style={{padding:'20 auto'}} align='center'>
          <Avatar style={avatarStyle}>
             <LocalHospitalIcon/>
           </Avatar>
           <h3>Sign UP</h3>
          </Grid  >
+         <div>
+         <TextField style={{margin:10}}  onChange={(e)=>{setFirstNameReg(e.target.value)}}  type="text" label="First Name" variant="standard" placeholder="Enter your first name" required/>        
+         <TextField style={{margin:10}}  onChange={(e)=>{setLastNameReg(e.target.value)}}  type="text" label="Last Name" variant="standard" placeholder="Enter your last " required/>
+         <TextField style={{margin:10}}  onChange={(e)=>{setUserNameReg(e.target.value)}}  type="text" label="Username" variant="standard" placeholder="Enter your username" required/>        
+         <TextField style={{margin:10}}  onChange={(e)=>{setEmailReg(e.target.value)}}  type="text" label="E-mail" variant="standard" placeholder="Enter your E-mail"  required/>
+         <TextField style={{margin:10}}  onChange={(e)=>{setPhone(e.target.value)}}  type="number" label="Cell Phone" variant="standard" placeholder="Enter your Phone number"  required/>
+         <TextField style={{margin:10 , marginTop:25}}  onChange={(e)=>{setDate(e.target.value)}}  type="date" variant="standard"   required/>
+         <TextField style={{margin: 10 , marginLeft: 130}}  onChange={(e)=>{setPasswordReg(e.target.value)}}  type='password' label="Password" variant="standard" placeholder="Enter your password" required/>
+         
 
-         <TextField onChange={(e)=>{setUserNameReg(e.target.value)}}  type="text" label="Username" variant="standard" placeholder="Enter your username" fullWidth required/>        
-         <TextField onChange={(e)=>{setEmailReg(e.target.value)}}  type="text" label="E-mail" variant="standard" placeholder="Enter your E-mail" fullWidth required/>
-         <TextField onChange={(e)=>{setPasswordReg(e.target.value)}}  type='password' label="Password" variant="standard" placeholder="Enter your password" fullWidth required/>
-                 
+         </div>     
          <FormControlLabel
           control={ <Checkbox name="checkedB" color=""/> } label="Remember Me"/>
-          <Link to="signin"><Button  onClick={Register} style={btnStyle} fullWidth variant="contained">Sign up</Button></Link>
-      
-        <div className="google-Login"> 
-        <GoogleLogin
-          clientId="934975783401-0dmi242184gi8oo0eheq9ripneo297kl.apps.googleusercontent.com"
-          buttonText="Login"
-          onSuccess={responseGoogle}
-          onFailure={responseGoogle}
-          cookiePolicy={'single_host_origin'}
-        />   
-        </div>
-
-        <div className="facebook-login">
-        <FacebookLogin
-          appId="2868856460098325"
-          autoLoad={true}
-          fields="name,email,picture"
-          //onClick={componentClicked}
-          callback={responseFacebook} />,
-        </div>
+          {!validat?<Link to="signin"><Button  onClick={Register} style={btnStyle} fullWidth variant="contained">Sign up</Button></Link>:
+          <Button  onClick={Register} style={btnStyle} fullWidth variant="contained">Sign up</Button>}
 
         </Paper>
+       
       </Grid>
     </div>
   )

@@ -40,39 +40,63 @@ const db = mysql.createConnection({
   database :"loginsystem",
 
 })
-//------------------------------------------------------------------------------------------------//
-//create a Register route in the backend
-app.post("/profil",(req, res)=>{
+const db1 = mysql.createConnection({
+  user : "root",
+  host : "localhost",
+  password : "password123",
+  database :"donne",
 
-  const firstName = req.body.firstName
-  const lastName = req.body.lastName 
-  const weight = req.body.weight
-  const height = req.body.height
-  const age = req.body.age
-  const gender = req.body.gender
-  
-    const sqlInsert = "INSERT INTO profil (FisttName,LastName,weight,height,age, gender) VALUES (?,?,?,?,?,?);"
-    db.query(sqlInsert,[firstName, lastName, weight, height,age, gender],(err,result)=>{
-      console.log(err);
+})
+db1.connect(function(err) {
+  if (err) throw err;
+  db1.query("SELECT * FROM fitnessexe", function (err, result, fields) {
+    if (err) throw err;
+    console.log(result);
     
-  })
-  })
+  });
+});
+
+db.connect(function(err) {
+  if (err) throw err;
+  db.query("SELECT * FROM users", function (err, result, fields) {
+    if (err) throw err;
+    console.log(result);
+  });
+});
+//------------------------------------------------------------------------------------------------//
+
 
 app.post("/register",(req, res)=>{
-
+const firstName = req.body.firstName
+const lastName = req.body.lastName
 const username = req.body.username
+const phone = req.body.phone
+const birthday = req.body.birthday
 const password = req.body.password
 const email = req.body.email
 
-bcrypt.hash(password,saltRounds,(err,hash)=>{
+
+const sqlSelect = "SELECT * FROM users WHERE username=?;"
+db.query(sqlSelect,username,(err,result)=>{
   if(err){
-    console.log(err);
+    res.send({err : err})
   }
-  const sqlInsert = "INSERT INTO users (username,password,email) VALUES (?,?,?);"
-  db.query(sqlInsert,[username, hash, email],(err,result)=>{
-    console.log(err);
-  })
+  if(result.length >0){
+     res.send("user already existe")
+  }else{
+    bcrypt.hash(password,saltRounds,(err,hash)=>{
+      if(err){
+        console.log(err);
+      }
+      const sqlInsert = "INSERT INTO users ( username, email, password ,firstName, lastName, birthday, phone) VALUES (?,?,?,?,?,?,?);"
+      db.query(sqlInsert,[username, email,hash, firstName, lastName, birthday,phone  ],(err,result)=>{
+        console.log(err);
+      })
+    })
+    }
+  
 })
+
 })
 //-------------------------------------------------------------------------------------------------//
 //create a Login route in the backend (post)
@@ -120,8 +144,27 @@ app.post("/logout",(req,res)=>{
     res.send("no err")
   })
 })
-
+//----------------------------------------------------------------------------------------------//
+app.post("/send",(req,res)=>{
+  fullName= req.body.fullName
+  email = req.body.email
+  message= req.body.message
+  const sqlQ = "INSERT INTO message (fullName, email, message) VALUES (?,?,?);"
+  db.query(sqlQ,[fullName,email,message],(err,result)=>{
+    console.log(err);
+  })
+})
 //---------------------------------------------------------------------------------------------//
+app.post("/fitness", function(request, result){
+
+  db1.query("SELECT * FROM fitnessexe;", function(err, results, fields){
+       if(err) throw err;
+      result.send(results);
+  })
+})
+//---------------------------------------------------------------------------------------------//
+
+
 app.listen(3002,()=>{
   console.log("run succesfully");
 })

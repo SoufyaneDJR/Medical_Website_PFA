@@ -1,0 +1,30 @@
+.containerProfil {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  text-align: center;
+  margin-top: -30px;
+  margin-bottom: -50px;
+  height: 80%;
+  width: 60%;
+  margin: 50px auto;
+  background: rgb(0, 0, 0);
+  border-radius: 20px;
+  border: 1px solid white;
+  padding-right: 40px;
+}
+.containerImage {
+  float: right;
+  border: 2px solid red;
+  border-radius: 100%;
+}
+.listProfil {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ul {
+  margin-bottom: 30px;
+}

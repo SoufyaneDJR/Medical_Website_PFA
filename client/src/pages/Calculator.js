@@ -10,8 +10,7 @@ function Calculator() {
     <div>
      
       <CaloriCalculator />
-      <Idealweight/>
-      <BmrCalculator/>
+      
       
     </div>
   )

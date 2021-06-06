@@ -1,0 +1,37 @@
+.fitnessHome {
+  height: 100vh;
+  background: url("home.jpg");
+  background-size: cover;
+  padding: 15px;
+  display: flex;
+}
+.FitnessContainer {
+  margin-top: 150px;
+  margin-left: 40px;
+}
+.FitnessContainer h1 {
+  text-align: left;
+  color: white;
+  font-size: 35px;
+}
+.FitnessContainer h2 {
+  text-align: left;
+  color: white;
+  font-size: 35px;
+}
+.FitnessContainer strong {
+  color: yellowgreen;
+  font-size: 35px;
+}
+.btn1 {
+  color: white;
+  height: 50px;
+  border-radius: 5px;
+  border: 1px solid yellowgreen;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  width: 50%;
+  background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(154, 205, 50, 0.9));
+}

@@ -1,4 +1,4 @@
-.footer-img {
+/*.footer-img {
   width: 20%;
   border-radius: 3px;
   margin-left: 250px;
@@ -42,4 +42,76 @@
 }
 .a {
   text-decoration: none;
+}*/
+.contact {
+  position: relative;
+  min-height: 100vh;
+  padding: 50px 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: url("hospit.jpg");
+  background-size: cover;
+}
+.contact .content {
+  max-width: 800px;
+  text-align: center;
+}
+.contact .content h2 {
+  font-size: 36px;
+  font-weight: 500;
+  color: white;
+}
+.contact .content p {
+  font-weight: 300;
+  color: white;
+}
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container .contactInfo {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+.container .contactInfo .box {
+  position: relative;
+  padding: 20px 0px;
+  display: flex;
+}
+.container .contactInfo .box .icon {
+  min-width: 60px;
+  height: 60px;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+}
+.container .contactInfo .box .text {
+  display: flex;
+  margin-left: 20px;
+  font-size: 16px;
+  flex-direction: column;
+  font-weight: 300;
+  color: white;
+}
+.contactForm {
+  width: 40%;
+  padding: 30px;
+  background: white;
+  padding-top: 0px;
+  border-radius: 3px;
+}
+@media (max-width: 700px) {
+  .container {
+    flex-direction: column;
+  }
+  .contactForm {
+    width: 300px;
+  }
 }

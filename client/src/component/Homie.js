@@ -2,6 +2,8 @@ import React  from 'react'
 import Button from '@material-ui/core/Button';
 import "./home.css"
 import Modal from 'react-modal';
+import * as FcIcons from "react-icons/fc"
+
 
 
 Modal.setAppElement('#root');
@@ -11,7 +13,38 @@ function Homie() {
   return (
       
    <>
+   <section>
+     <h1 style={{marginTop:"20px", fontSize:50,textDecoration:"underline" }}> <FcIcons.FcSportsMode/> Services</h1>
+      
+     <div className="servicesCont">
+        <div className="serv1">
+          <div className="icons">
+            <FcIcons.FcAlarmClock/>
+            <h2>reminde me</h2>
+           </div>
+
+          
+        </div>
+        <div className="serv2">
+          <div className="icons">
+            <FcIcons.FcSearch/> 
+            <h2>Search Drugs</h2>
+            </div>
+        
+        </div>
+        <div className="serv3">
+          <div className="icons">
+            <FcIcons.FcCalculator/>
+            <h2>Caloriiiies !!</h2> 
+            </div>
+          
+        </div>
+       </div>
+     </section>
+     <div><h2 style={{marginTop:"140px" , marginBottom:-150, fontSize:50,textDecoration:"underline" }}> <FcIcons.FcSportsMode/> Also .. </h2></div>
+     
      <section className="home">
+     
      <div class="row1">
          
                 <div className="course-col1">

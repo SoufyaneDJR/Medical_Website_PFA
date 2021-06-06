@@ -11,9 +11,25 @@ import FormLabel from '@material-ui/core/FormLabel';
 
 
 
+
 function Idealweight() {
 
+  const [resultMale, setresultMale] = useState(0)
+  const [resultFemale, setresultFemale] = useState(0)
+  const [height, setHeight] = useState(0)
+  const [weight, setWeight] = useState(0)
+  const [age, setAge] = useState(0)
 
+  const Age = (e) =>{
+    setAge(e.target.value)
+   }
+   const Weight = (e) =>{
+    setWeight(e.target.value)
+   }
+   const Height = (e) =>{
+    setHeight(e.target.value)
+   }
+  
   
   const styleRadio = { display: 'inline-block',marginTop:'10px'}
   const btnStyle = { backgroundColor:"gray" ,color:"white", margin:"8px 0px", marginTop:10 }
@@ -21,26 +37,20 @@ function Idealweight() {
 
 
   return (
-    <div>
+    <div  >
        <h1 style={{padding:40}}> <GrIcons.GrCalculator/> IDEAL WEIGHT CALCULATOR</h1>
         <h3>What’s my ideal weight?” It’s a pretty normal question for most men and women. Knowing your ideal weight can help you make healthy choices for fitness, nutrition and lifestyle. Use this ideal weight calculator to find out the ideal weight</h3>
 
         <Grid>
            <Paper style={stylePaper} >
            <div className="textField" > 
-            <TextField type="number" label="age" variant="outlined" placeholder="Enter your age" fullWidth required/>    
+            <TextField onChange={Age} type="number" label="age" variant="outlined" placeholder="Enter your age" fullWidth required/>    
             </div>
-            <FormControl style={styleRadio} component="fieldset">
-                <FormLabel component="legend">Gender</FormLabel>
-                <RadioGroup aria-label="gender" name="gender1" >
-                    <FormControlLabel value="female" control={<Radio />} label="Female" />
-                    <FormControlLabel value="male" control={<Radio />} label="Male" />     
-                </RadioGroup>
-                </FormControl>     
+                    
              <div className="textField" >   
-            <TextField style={{margin: 'auto'}}  type='text' label="height" variant="outlined" placeholder="enter your height" fullWidth required/>
+            <TextField onChange={Height} style={{margin: 'auto'}}  type='text' label="height" variant="outlined" placeholder="enter your height" fullWidth required/>
             </div>
-            <Button style={btnStyle}  variant="outlined" fullWidth>CALCULATE</Button>  
+            <Button style={btnStyle}  onClick={()=>{setresultMale()}} variant="outlined" fullWidth>CALCULATE</Button>  
             <Button style={btnStyle} fullWidth variant="outlined">CLEAR</Button> 
            </Paper>
         </Grid>

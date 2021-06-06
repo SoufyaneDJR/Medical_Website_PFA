@@ -50,7 +50,7 @@ strong {
   justify-content: space-between;
 }
 
-@media all and (max-width: 400px) {
+@media all and (max-width: 600px) {
   .logo {
     padding-left: 10px;
   }
@@ -62,4 +62,21 @@ strong {
   width: 50%;
   height: auto;
   margin: 20px auto;
+}
+.servicesCont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media (max-width: 600px) {
+  .servicesCont {
+    flex-direction: column;
+  }
+}
+.icons {
+  font-size: 150px;
+  padding: 70px;
+}
+.servicesCont {
+  margin-bottom: -120px;
 }
