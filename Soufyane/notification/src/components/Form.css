@@ -1,0 +1,78 @@
+
+.form {
+    position: relative;
+    top: 30px;
+    background-color:#f4f6fb;
+    font-family: 'Baloo Tammudu 2', cursive;
+    padding : 20px;
+    text-align: center;
+    width: 500px;
+    height:auto;
+    border-radius: 10px;
+    margin: auto;
+
+}
+.container{
+    display : grid;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows:1fr 1fr 2fr 1fr;
+    row-gap: 7px;
+    column-gap: 5px;
+}
+.drugname{
+    justify-self: center;
+    grid-column: 1/4;
+    grid-row: 1/2;
+    box-shadow: none;
+    border:none;
+    padding: 5px;
+    width: 90%;
+    height: 25px;
+    border-radius: 10px;
+}
+.firstday{
+    grid-column: 1/2;
+    grid-row:2/3;
+}
+.lastday{
+    grid-column: 2/3;
+    grid-row:2/3;
+    grid-area: 'lastday';
+}
+.frequency {
+    grid-column: 3/4;
+    grid-row:2/3;
+    grid-area : 'frequency';
+}
+.note{
+    justify-self: center;
+    box-shadow: none;
+    border:none;
+    resize:none;
+    width: 90%;
+    height: 100%;
+    padding: 5px;
+    border-radius: 10px;
+    grid-column: 1/4;
+    grid-row:3/4;
+}
+.reminder{
+    grid-column: 1/3;
+    grid-row:4/5;
+    grid-area : 'reminder';
+}
+.button{
+    justify-self: center;
+    width: 70%;
+    grid-column: 3/4;
+    grid-row:4/5;
+    font-family: 'Baloo Tammudu 2', cursive;
+    background-color: black;
+    color:aliceblue;
+    padding-top: 5px;
+    border-radius: 10px;
+    border:none;
+    cursor:pointer;
+}

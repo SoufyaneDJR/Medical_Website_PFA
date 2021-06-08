@@ -1,0 +1,43 @@
+CREATE TABLE USERS (
+    id INTEGER AUTO_INCREMENT,
+    username VARCHAR(255) UNIQUE NOT NULL,
+    email TEXT NOT NULL,
+    password TEXT NOT NULL,
+    firstname TEXT,
+    lastname TEXT,
+    birthday DATE,
+    PHONE VARCHAR(250),
+    PRIMARY KEY (id)
+)
+
+INSERT INTO USERS (username,email,password,firstname,lastname,birthday,phone) VALUES (
+    'soufyane123','soufyane.djaider@gmail.com','soufyane','soufyane','djaider','2000-01-01','0600000000');
+)
+
+CREATE TABLE TRACKER (
+    id INTEGER AUTO_INCREMENT,
+    username VARCHAR(255) NOT NULL,
+    drugname TEXT,
+    firstday date,
+    lastday date,
+    frequency TIME,
+    note mediumtext,
+    reminder ENUM('0','1'),
+    PRIMARY KEY (id),
+    FOREIGN KEY (username) REFERENCES users(username)
+)
+INSERT INTO TRACKER (username,drugname,firstday,lastday,frequency,note,reminder) VALUES (
+    'soufyane123','Doliprane','2021-06-08','2021-06-10','15:00:00','3 times a day','1'
+),(
+    'soufyane123','Amoxil','2021-06-08','2021-06-11','15:30:00','mour l makla','0'
+);
+
+CREATE TABLE FREQUENCY (
+    fid INTEGER NOT NULL,
+    freq1 TIME NOT NULL,
+    freq2 TIME,
+    freq3 TIME,
+    freq4 TIME,
+    FOREIGN KEY (fid) REFERENCES TRACKER(id)
+)
+INSERT INTO FREQUENCY ()VALUES (1,'15:00:00','16:00:00','17:00:00')
