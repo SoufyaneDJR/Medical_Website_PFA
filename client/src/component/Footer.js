@@ -1,15 +1,10 @@
 import React, { useState } from 'react'
 import "./footer.css" ;
-import * as FaIcons from "react-icons/fa"
 import * as BiIcons from "react-icons/bi"
-import * as SiIcons from "react-icons/si"
-import * as RiIcons from "react-icons/ri"
-import * as GiIcons from "react-icons/gi"
 import * as GrIcons from "react-icons/gr"
 
 import * as FiIcons from "react-icons/fi"
-import * as ImIcons from "react-icons/im"
-import { Button, GridListTileBar, TextField } from '@material-ui/core';
+import { Button, TextField } from '@material-ui/core';
 import axios from 'axios';
 
 

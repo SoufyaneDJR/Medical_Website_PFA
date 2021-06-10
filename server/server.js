@@ -36,25 +36,25 @@ app.use(session({
 const db = mysql.createConnection({
   user : "root",
   host : "localhost",
-  password : "password123",
-  database :"loginsystem",
+  password : "soufyane",
+  database :"pfa",
 
 })
 const db1 = mysql.createConnection({
   user : "root",
   host : "localhost",
-  password : "password123",
-  database :"donne",
+  password : "soufyane",
+  database :"pfa",
 
 })
-db1.connect(function(err) {
-  if (err) throw err;
-  db1.query("SELECT * FROM fitnessexe", function (err, result, fields) {
-    if (err) throw err;
-    console.log(result);
+// db1.connect(function(err) {
+//   if (err) throw err;
+//   db1.query("SELECT * FROM fitnessexe", function (err, result, fields) {
+//     if (err) throw err;
+//     console.log(result);
     
-  });
-});
+//   });
+// });
 
 db.connect(function(err) {
   if (err) throw err;
@@ -155,16 +155,30 @@ app.post("/send",(req,res)=>{
   })
 })
 //---------------------------------------------------------------------------------------------//
-app.post("/fitness", function(request, result){
+// app.post("/fitness", function(request, result){
 
-  db1.query("SELECT * FROM fitnessexe;", function(err, results, fields){
-       if(err) throw err;
-      result.send(results);
-  })
-})
+//   db1.query("SELECT * FROM fitnessexe;", function(err, results, fields){
+//        if(err) throw err;
+//       result.send(results);
+//   })
+// })
 //---------------------------------------------------------------------------------------------//
 
-
-app.listen(3002,()=>{
-  console.log("run succesfully");
+//MEDICAMENTS:
+app.get('/medicament/api', (req, res) => {
+  let query = 'SELECT * FROM DRUGS WHERE DRUGNAME = "ABILIFY 10 MG, Comprimé"'
+  db.query(query, (error, result) => {
+      if (error) {
+          res.send('Error At Fetching Data !!');
+      }
+      res.json(result)
+  })
 })
+
+//tracker
+app.use('/tracker',require('./routes/tracker'))
+
+const PORT = process.env.PORT || 3002;
+app.listen(PORT, () => {
+    console.log(`server started on port ${PORT}`)
+});

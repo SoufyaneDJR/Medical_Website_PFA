@@ -15,3 +15,24 @@
   align-items: center;
   justify-content: center;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@500&display=swap');
+.App {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+.list-empty{
+  font-family: 'Baloo Tammudu 2', cursive;
+  font-size:medium;
+  padding-top: 5px;
+  position: relative;
+  background-color: #f4f6fb;
+  border-radius: 10px;
+  margin: auto;
+  width: 500px;
+  top: 50px;
+  padding: 0px 20px;
+  padding-top: 5px;
+  text-align: center;
+}

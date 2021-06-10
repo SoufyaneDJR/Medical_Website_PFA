@@ -13,7 +13,7 @@ import Login from './component/LogInUp/Login';
 import Covid from './pages/Covid';
 import Calculator from './pages/Calculator';
 import Search from './component/Search';
-import Reminder from './component/Reminder';
+import Tracker from './component/Tracker';
 import Profil from './pages/Profil';
 import RedirectSignin from './component/RedirectSignin';
 import axios from 'axios'
@@ -26,21 +26,21 @@ import logout from './component/LogInUp/logout';
 function App() {
 
   const [LoginStatus, setLoginStatus] = useState(false)
-
+  const [status,setStatus]=useState({})
   axios.defaults.withCredentials = true
 
   useEffect(() => {
     axios.get("http://localhost:3002/login").then((response) => {
       console.log(response.data);
       if (response.data.loggedIn === true) {
+        setStatus({...response.data})
         setLoginStatus(true);
       }else{
         setLoginStatus(false)
       }
     });
   }, []);
-  
-
+  console.log(status)
   return (
     <>
     <Router>
@@ -48,7 +48,7 @@ function App() {
      <Switch>
 
        <Route path='/' exact component={Home}/>
-       <Route path='/Services'  component={Services}/>
+       <Route path='/Services' component={Services}/>
        <Route path='/Health' component={Health}/>
        <Route path='/Fitness' component={Fitness}/>
        <Route path='/About' component={About}/> 
@@ -57,7 +57,7 @@ function App() {
        <Route path='/calculator' component={Calculator}/>
        <Route path='/search' component={Search}/>
        <Route path='/profil' component={Profil}/>
-       <RedirectSignin path="/reminder" exact component={Reminder} loggedIn={LoginStatus}  />
+       <RedirectSignin path="/Tracker" exact component={Tracker} status={status}  />
        
        <RedirectHome path="/signin" exact component={Login} loggedIn={LoginStatus}  />
        <RedirectHome path="/signup" exact component={Signup} loggedIn={LoginStatus}  />

@@ -34,7 +34,7 @@ function Signup() {
     axios.defaults.withCredentials = true
     // create function to send informations to the back-end
     const Register = () => {
-      if(firstName==""||lastName==""||userNameReg==""||phone==""||date==""||passwordReg==""||emailReg==""){
+      if(firstName===""||lastName===""||userNameReg===""||phone===""||date===""||passwordReg===""||emailReg===""){
         alert("you have to fill all the fields")
         validat=false
       }else{

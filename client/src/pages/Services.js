@@ -23,7 +23,7 @@ function Services() {
         <div class="course-col">
             <h3><BsIcons.BsAlarm/> REMINDER</h3>
             <p>this Website helps you to remember when you have to take your medicament, it reminds you by sending an e-mail to you , you just have to enter your informations</p>
-             <Link to="/Reminder"> <Button  variant="outlined"  >Get Started</Button> </Link>
+             <Link to="/Tracker"> <Button  variant="outlined"  >Get Started</Button> </Link>
         </div>
         <div class="course-col">
             <h3><GiIcons.GiMedicines/> MEDICAMENT</h3>

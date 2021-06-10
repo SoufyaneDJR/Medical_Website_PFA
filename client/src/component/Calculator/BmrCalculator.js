@@ -1,5 +1,4 @@
 import React from 'react'
-import * as GrIcons from "react-icons/gr"
 import Button from '@material-ui/core/Button';
 import { Grid, Paper, TextField } from '@material-ui/core'
 import Radio from '@material-ui/core/Radio';
