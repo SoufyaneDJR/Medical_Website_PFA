@@ -174,7 +174,16 @@ app.get('/medicament/api', (req, res) => {
       res.json(result)
   })
 })
-
+//Autosearch 
+app.get('/medicament/autosearch',(req,res)=>{
+  let query = 'SELECT id,drugname,distributeur FROM DRUGS'
+  db.query(query, (error, result) => {
+      if (error) {
+          res.send('Error At Fetching Data !!');
+      }
+      res.json(result)
+  })
+})
 //tracker
 app.use('/tracker',require('./routes/tracker'))
 

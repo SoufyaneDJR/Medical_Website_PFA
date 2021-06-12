@@ -56,6 +56,7 @@ router.get('/data/username/:username', (req, res) => {
 
 // POST DATA INTO DATABASE
 router.post('/insert/:username', (req, res) => {
+    console.log(req.body)
     let reminder = (req.body.reminder) ? "1" : "0"
     let query = `INSERT INTO TRACKER (username,drugname,firstday,lastday,frequency,note,reminder) VALUES ('${req.params.username}','${req.body.drugname}','${req.body.firstday}','${req.body.lastday}','${req.body.frequency}','${req.body.note}','${reminder}')`
     connection.query(query, (error, result) => {
@@ -66,7 +67,8 @@ router.post('/insert/:username', (req, res) => {
     })
 })
 router.post('/delete/:username', (req, res) => {
-    let query = `DELETE FROM TRACKER WHERE id = ${req.body.id} AND username='${req.params.username}'`
+    let query = `DELETE FROM TRACKER WHERE username='${req.params.username}' AND drugname = '${req.body.drugname}' AND firstday ='${formatDate(req.body.firstday)}' AND lastday ='${formatDate(req.body.lastday)}' AND frequency ='${req.body.frequency}:00' AND note = '${req.body.note}'`
+        console.log(query)
     connection.query(query, (error, result) => {
         if (error) {
             res.send("error at deleting data")

@@ -77,13 +77,10 @@ export default class Countries extends Component {
       return  <CountryDetalis
               key = {index}
                   countryCode = {curr.CountryCode}
-  
                   totalCases = {changeNumberToFormat(curr.TotalConfirmed)}
                   newCases={changeNumberToFormat(curr.NewConfirmed)}
-  
                   totalDeaths = {changeNumberToFormat(curr.TotalDeaths)}
                   newDeaths={changeNumberToFormat(curr.NewDeaths)}
-  
                   totalRecovered = {changeNumberToFormat(curr.TotalRecovered)}
                   newRecovered={changeNumberToFormat(curr.NewRecovered)}/>
   

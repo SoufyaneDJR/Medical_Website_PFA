@@ -21,8 +21,6 @@ import RedirectHome from './component/RedirectHome';
 import logout from './component/LogInUp/logout';
 
 
-
-
 function App() {
 
   const [LoginStatus, setLoginStatus] = useState(false)

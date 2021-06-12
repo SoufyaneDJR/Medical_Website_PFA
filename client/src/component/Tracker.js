@@ -1,6 +1,7 @@
 import '../App.css';
-import TrackerForm from './TrackerForm';
-import TrackerList from './TrackerList';
+import './Form.css';
+import TrackerForm from './TrackerForm.js';
+import TrackerList from './TrackerList.js';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { withRouter } from 'react-router';
@@ -14,6 +15,7 @@ const Tracker = ({status}) => {
   useEffect(() => {
     axios.get(`http://localhost:3002/tracker/data/username/${status.user[0].username}`).then(
       (res) => {
+        console.log(res.data)
         res.data.forEach(
           (drug) => {
             drug.firstday = new Date(drug.firstday).toDateString();
@@ -37,8 +39,17 @@ const Tracker = ({status}) => {
   const deleteDrug = (id) => {
     console.log(id)
     setTracker(tracker.filter((drug) => drug.id !== id))
+    //tzidha l ouiam
+    let obj = tracker.filter((drug) => { return drug.id === id })[0]
     axios.post(`http://localhost:3002/tracker/delete/${status.user[0].username}`, {
       id: id,
+      drugname:obj.drugname,
+      firstday:obj.firstday,
+      lastday:obj.lastday,
+      frequency:obj.frequency,
+      note:obj.note,
+      reminder: obj.reminder,
+      //
     }).then((response) => {
       console.log(response)
       if (response.data) {
@@ -86,7 +97,7 @@ const Tracker = ({status}) => {
 
 
   return (
-    <>
+    <div className="Trackerbg">
 
       <TrackerForm onAdd={addDrug} status = {status} />
       {
@@ -98,7 +109,7 @@ const Tracker = ({status}) => {
           </div>
         )
       }
-    </>
+    </div>
   );
 }
 

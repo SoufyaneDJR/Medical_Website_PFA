@@ -2,7 +2,7 @@ import React, { useState} from 'react'
 import './Form.css'
 import axios from 'axios'
 
-const Form = ({ onAdd,status }) => {
+const TrackerForm = ({ onAdd,status }) => {
   axios.defaults.withCredentials = true
   const [form, setForm] = useState({
     drugname: '',
@@ -60,7 +60,6 @@ const Form = ({ onAdd,status }) => {
     });
   }
   return (
-    <div>
       <div className="trackerform" >
         <h1>Insert Drugs you want to track</h1>
         <form className='listcontainer' onSubmit={onSubmit}>
@@ -83,8 +82,7 @@ const Form = ({ onAdd,status }) => {
           <input className='button' type="submit" value="Track Drug"></input>
         </form>
       </div>
-    </div>
   )
 }
 
-export default Form
+export default TrackerForm

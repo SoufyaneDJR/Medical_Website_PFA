@@ -41,6 +41,6 @@ th {
 td {
     padding: 1rem 2rem;
 }
-tr:nth-child(odd) {
+tr:nth-child(even) {
     background-color:#f4f6fb ;
 }
