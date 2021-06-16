@@ -1,7 +1,5 @@
 const nodemailer = require("nodemailer")
 const mysql = require('mysql');
-// const img2 = require('./images/image-2.png')
-
 
 var connection = mysql.createConnection({
     user: 'root',
@@ -87,10 +85,10 @@ setInterval(() => {
             if (+time >= +today && row.reminder ==="1") {
                 // GET MAIL OF THE USER TO SEND HIM AN EMAIL;
                 let getemail = `SELECT email FROM USERS WHERE username = (SELECT username FROM TRACKER WHERE id = ${row.id});`
+                console.log(getemail)
                 connection.query(getemail, (err, resu) => {
-
                     let email = Object.values(JSON.parse(JSON.stringify(resu)))[0].email;
-
+                    console.log(email)
                     let mailOption = {
                         from: '"Health Up Services" <pfahealthup@gmail.com>',
                         to: `${email}`,
@@ -209,7 +207,7 @@ setInterval(() => {
                           <tr>
                             <td style="padding-right: 0px;padding-left: 0px;" align="center">
                               
-                              <img align="center" border="0" src="images/image-1.png" alt="Image" title="Image" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 32%;max-width: 185.6px;" width="185.6"/>
+                            <img align="center" border="0" src="https://i.ibb.co/jMZM5rB/healthup.png" alt="Image" title="Image" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 32%;max-width: 185.6px;" width="185.6"/>
                               
                             </td>
                           </tr>
@@ -250,7 +248,7 @@ setInterval(() => {
                           <tr>
                             <td style="padding-right: 0px;padding-left: 0px;" align="center">
                               
-                              <img align="center" border="0" src="images/image-2.png" alt="Image" title="Image" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 26%;max-width: 150.8px;" width="150.8"/>
+                            <img align="center" border="0" src="https://i.ibb.co/mcyqk2H/stopwatch.png" alt="Image" title="Image" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 26%;max-width: 150.8px;" width="150.8"/>
                               
                             </td>
                           </tr>
@@ -424,7 +422,7 @@ setInterval(() => {
                                 
                         <div align="center">
                           <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0; border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;font-family:'Montserrat',sans-serif;"><tr><td style="font-family:'Montserrat',sans-serif;" align="center"><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="http://localhost:3000" style="height:49px; v-text-anchor:middle; width:217px;" arcsize="8%" stroke="f" fillcolor="#0f7d81"><w:anchorlock/><center style="color:#c5d5d6;font-family:'Montserrat',sans-serif;"><![endif]-->
-                            <a href="localhost:3000" target="_blank" style="box-sizing: border-box;display: inline-block;font-family:'Montserrat',sans-serif;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #c5d5d6; background-color: #0f7d81; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; width:auto; max-width:100%; overflow-wrap: break-word; word-break: break-word; word-wrap:break-word; mso-border-alt: none;">
+                            <a href="http://localhost:3000" target="_blank" style="box-sizing: border-box;display: inline-block;font-family:'Montserrat',sans-serif;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #c5d5d6; background-color: #0f7d81; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; width:auto; max-width:100%; overflow-wrap: break-word; word-break: break-word; word-wrap:break-word; mso-border-alt: none;">
                               <span style="display:block;padding:15px 33px;line-height:120%;"><span style="font-size: 16px; line-height: 19.2px;"><span style="line-height: 19.2px; font-size: 16px;">Health Up Website</span></span></span>
                             </a>
                           <!--[if mso]></center></v:roundrect></td></tr></table><![endif]-->
@@ -460,10 +458,11 @@ setInterval(() => {
 
                     
                     let gap = time.getTime() - today.getTime();
+                    console.log(gap)
                     setTimeout(() => {
                         console.log(row.id)
                         transporter.sendMail(mailOption, (err, info) => {
-                            console.log('mail sent : %s', info.message.Id);
+                            console.log(info.messageId);
                             if (err) {
                                 return console.log(err);
                             }

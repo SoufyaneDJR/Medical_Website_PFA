@@ -9,11 +9,11 @@ import { withRouter } from 'react-router';
 const Tracker = ({status}) => {
   console.log(status)
   axios.defaults.withCredentials = true
-
   const [tracker, setTracker] = useState({});
+
   //Extract data from Server
   useEffect(() => {
-    axios.get(`http://localhost:3002/tracker/data/username/${status.user[0].username}`).then(
+    axios.get(`http://localhost:3002/tracker/data/username/${localStorage.getItem('username')}`).then(
       (res) => {
         console.log(res.data)
         res.data.forEach(
@@ -41,7 +41,7 @@ const Tracker = ({status}) => {
     setTracker(tracker.filter((drug) => drug.id !== id))
     //tzidha l ouiam
     let obj = tracker.filter((drug) => { return drug.id === id })[0]
-    axios.post(`http://localhost:3002/tracker/delete/${status.user[0].username}`, {
+    axios.post(`http://localhost:3002/tracker/delete/${localStorage.getItem('username')}`, {
       id: id,
       drugname:obj.drugname,
       firstday:obj.firstday,
@@ -65,7 +65,7 @@ const Tracker = ({status}) => {
     setTracker(tracker.map((drug) => drug.id === id ? { ...drug, reminder: !drug.reminder } : drug))
     let obj = tracker.filter((drug) => { return drug.id === id })[0]
     const rem = (obj.reminder) ? "0" : "1";
-    axios.post(`http://localhost:3002/tracker/reminder/${status.user[0].username}`,{
+    axios.post(`http://localhost:3002/tracker/reminder/${localStorage.getItem('username')}`,{
       drugname:obj.drugname,
       firstday:obj.firstday,
       lastday:obj.lastday,
@@ -86,7 +86,7 @@ const Tracker = ({status}) => {
   const addDrug = (drug) => {
 
     const id = 10000 + Math.floor(Math.random() * 1000);
-    const username = status.user[0].username;
+    const username = localStorage.getItem('username');
 
     drug.firstday = new Date(drug.firstday).toDateString();
     drug.lastday = new Date(drug.lastday).toDateString();

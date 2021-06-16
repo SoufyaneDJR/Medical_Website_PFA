@@ -12,8 +12,6 @@ const TrackerForm = ({ onAdd,status }) => {
     note: '',
     reminder: false
   })
-  const [suggestion, setSuggestion] = useState([])
-  const [resFound, setResFound] = useState(true)
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -61,47 +59,12 @@ const TrackerForm = ({ onAdd,status }) => {
       reminder: false
     });
   }
-
-  const suggestedDrug = (value) => {
-    setForm({ ...form, drugname: value.drugname })
-    setSuggestion([])
-
-  }
-
-  const getSuggestions = () => {
-    if (suggestion.length === 0 && form.drugname.length > 2 && !resFound) {
-      return (<ul>No suggestions</ul>)
-    }
-    return (
-      <ul className={(suggestion.length === 0) ? "lul invisible" : "lul visible"}>
-        {
-          suggestion.map((item, index) => {
-            return <li className="lil" onClick={() => { suggestedDrug(item) }}>{item.drugname}</li>
-          })
-        }
-      </ul>
-    )
-  };
-
-  
   return (
       <div className="trackerform" >
         <h1>Insert Drugs you want to track</h1>
-        <form className='listcontainer' onSubmit={onSubmit} autocomplete="off">
-          <input className='drugname' type="text" id='drugname' placeholder='Drug Name' value={form.drugname} onChange={(e) =>{
-            setForm({ ...form, drugname: e.target.value });
-            if (e.target.value.length > 2) {
-              axios.get(`http://localhost:3002/autosearch=${e.target.value}`).then(
-                (res) => {
-                  let dt = JSON.parse(JSON.stringify(res.data))
-                  setSuggestion(dt)
-                }
-              )
-            } else {
-              setSuggestion([])
-            }
-          } }></input>
-          {getSuggestions()}
+        <form className='listcontainer' onSubmit={onSubmit}>
+          <input className='drugname' type="text" id='drugname' placeholder='Drug Name' value={form.drugname} onChange={(e) => setForm({ ...form, drugname: e.target.value })}></input>
+
           <label className='firstday' >
             <input type="date" id='firstday' value={form.firstday} onChange={(e) => setForm({ ...form, firstday: e.target.value })}></input>
           </label>

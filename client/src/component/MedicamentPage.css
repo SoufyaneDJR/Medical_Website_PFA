@@ -1,17 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@500&display=swap');
-.TrackedElement{
+*{
+    margin:0;
+    padding:0;
+}
+.medicamentTitle{
     font-family: 'Baloo Tammudu 2', cursive;
-    display :flex;
-    margin:10px;
-    background-color:darkgrey;
+    padding:1rem 2rem;
+    padding-top: 50px;
+    letter-spacing: 1px;
+    font-size: 3rem;
+    font-weight: 900;
+    text-align: center;
 }
-.linklist{
-    color:black;
-    text-emphasis: none;
-}
-.List{
+.medicamentcontainer{
     font-family: 'Baloo Tammudu 2', cursive;
     font-size:medium;
+
+    background-image: url('./blur-hospital.jpg');
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.medicamentList{
+    font-family: 'Baloo Tammudu 2', cursive;
+    font-size:large;
 
     width: 85%;
     height: auto;
@@ -20,11 +33,9 @@
     top:50px;
     left: 50%;
     transform: translateX(-50%);
-    text-align: center;
+    text-align: left;
 }
-table {
-    z-index:0;
-    color:black;
+.medicamenttable table {
     font-family: 'Baloo Tammudu 2', cursive;
     border-collapse: collapse;
     box-shadow: 0 5px 10px #e1e5ee;
@@ -33,29 +44,22 @@ table {
     overflow: hidden;
 }
 
-thead {
-    color:black;
+.medicamentList tr th {
     font-family: 'Baloo Tammudu 2', cursive;
-    box-shadow: 0 5px 10px #e1e5ee;
-}
-
-th {
-    color:black;
-    font-family: 'Baloo Tammudu 2', cursive;
-    padding: 1rem 2rem;
+    padding: 1rem 1rem;
     text-transform: uppercase;
     letter-spacing: 0.1rem;
     font-size: 0.7rem;
     font-weight: 900;
 }
 
-td {
-    color:black;
+.medicamentList tr td {
     font-family: 'Baloo Tammudu 2', cursive;
     padding: 1rem 2rem;
 }
-tr:nth-child(even) {
-    color:black;
-    font-family: 'Baloo Tammudu 2', cursive;
+.medicamentList tr:nth-child(odd) {
     background-color:#f4f6fb ;
+}
+.lineheight{
+    line-height: 80px;
 }

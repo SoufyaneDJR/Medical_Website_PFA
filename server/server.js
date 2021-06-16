@@ -164,6 +164,18 @@ app.post("/send",(req,res)=>{
 // })
 //---------------------------------------------------------------------------------------------//
 
+app.get('/medicament/query=:drugname',(req,res)=>{
+  let drug = req.params.drugname.split("_").join(" ").toUpperCase();
+  let query =`SELECT d_id,drugname FROM DRUGS WHERE DRUGNAME LIKE '%${drug}%' GROUP BY DRUGNAME`
+  db.query(query,(error,result)=>{
+      if (error) {
+          res.send(JSON.stringify("error at Searching"))
+          console.log(error);
+      }
+      res.send(result)
+  })
+})
+
 //MEDICAMENTS:
 app.get('/medicament/api', (req, res) => {
   let query = 'SELECT * FROM DRUGS WHERE DRUGNAME = "ABILIFY 10 MG, Comprimé"'
@@ -174,14 +186,28 @@ app.get('/medicament/api', (req, res) => {
       res.json(result)
   })
 })
-//Autosearch 
-app.get('/medicament/autosearch',(req,res)=>{
-  let query = 'SELECT id,drugname,distributeur FROM DRUGS'
-  db.query(query, (error, result) => {
+//
+app.get('/autosearch=:drugname',(req,res)=>{
+  let drug = req.params.drugname.split("_").join(" ").toUpperCase();
+  let query =`SELECT drugname FROM DRUGS WHERE drugname LIKE '%${drug}%' GROUP BY DRUGNAME`
+  db.query(query,(error,result)=>{
       if (error) {
-          res.send('Error At Fetching Data !!');
+          res.send(JSON.stringify("error at Auto Searching"))
+          console.log(error);
       }
-      res.json(result)
+      res.send(result)
+  })
+})
+//
+
+app.get('/medicament/id=:id',(req,res)=>{
+  let query =`SELECT * FROM DRUGS WHERE d_id = '${req.params.id}' GROUP BY DRUGNAME`
+  db.query(query,(error,result)=>{
+      if (error) {
+          res.send(JSON.stringify("error at Searching"))
+          console.log(error);
+      }
+      res.send(result)
   })
 })
 //tracker

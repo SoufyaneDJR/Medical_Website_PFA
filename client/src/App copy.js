@@ -12,14 +12,13 @@ import Signup from './component/LogInUp/Signup';
 import Login from './component/LogInUp/Login';
 import Covid from './pages/Covid';
 import Calculator from './pages/Calculator';
-import SearchPage from './component/SearchPage';
+import Search from './component/Search';
 import Tracker from './component/Tracker';
 import Profil from './pages/Profil';
 import RedirectSignin from './component/RedirectSignin';
 import axios from 'axios'
 import RedirectHome from './component/RedirectHome';
 import logout from './component/LogInUp/logout';
-import MedicamentPage from './component/MedicamentPage';
 
 
 function App() {
@@ -62,8 +61,7 @@ function App() {
        <Route path='/covid' component={Covid}/>      
        
        <Route path='/calculator' component={Calculator}/>
-       <Route path='/medicament' exact component={SearchPage}/>
-       <Route path="/medicament/by_id=:id" component={MedicamentPage}/>
+       <Route path='/search' component={Search}/>
        <Route path='/profil' component={Profil}/>
        <RedirectSignin path="/Tracker" exact component={Tracker} status={status}  />
        

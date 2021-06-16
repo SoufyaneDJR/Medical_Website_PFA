@@ -36,3 +36,11 @@
   padding-top: 5px;
   text-align: center;
 }
+
+.searchPage{
+  background-image: url('./component/blur-hospital.jpg');
+  height: 1800px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
